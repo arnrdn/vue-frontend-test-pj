@@ -16,23 +16,26 @@
                     </div>
                     <v-icon @click="onClose">mdi-close</v-icon>
                 </div>
-                <v-form ref="form" class="pa-7" v-model="valid" lazy-validation>
+                <v-form class="pa-7">
                     <v-text-field
                         outlined
                         label="Имя"
                         required
+                        :rules="rule"
                         v-model="name"
                     />
                     <v-text-field
                         outlined
                         label="Фамилия"
                         required
+                        :rules="rule"
                         v-model="lastName"
                     />
                     <v-text-field
                         outlined
                         label="Отчество"
                         required
+                        :rules="rule"
                         v-model="patronymic"
                     />
                     <v-menu
@@ -52,6 +55,7 @@
                                 readonly
                                 outlined
                                 required
+                                :rules="rule"
                                 v-bind="attrs"
                                 v-on="on"
                             ></v-text-field>
@@ -79,9 +83,15 @@
                         outlined
                         label="Адрес проживания"
                         required
+                        :rules="rule"
                         v-model="address"
                     />
-                    <v-text-field outlined label="Отдел" v-model="department" />
+                    <v-text-field
+                        outlined
+                        label="Отдел"
+                        :rules="rule"
+                        v-model="department"
+                    />
                     <v-textarea
                         outlined
                         label="О себе"
@@ -108,7 +118,6 @@
 
     export default {
         data: () => ({
-            valid: true,
             menu: false,
             birthDate: new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
                 .toISOString()
@@ -118,7 +127,8 @@
             patronymic: "",
             address: "",
             department: "",
-            about: ""
+            about: "",
+            rule: [(v) => !!v || "Это поле обязателно для заполнения"]
         }),
         methods: {
             ...mapActions({

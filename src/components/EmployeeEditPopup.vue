@@ -21,18 +21,21 @@
                         outlined
                         label="Имя"
                         required
+                        :rules="rule"
                         v-model="nameInput"
                     />
                     <v-text-field
                         outlined
                         label="Фамилия"
                         required
+                        :rules="rule"
                         v-model="lastNameInput"
                     />
                     <v-text-field
                         outlined
                         label="Отчество"
                         required
+                        :rules="rule"
                         v-model="patronymicInput"
                     />
                     <v-menu
@@ -52,6 +55,7 @@
                                 readonly
                                 outlined
                                 required
+                                :rules="rule"
                                 v-bind="attrs"
                                 v-on="on"
                             ></v-text-field>
@@ -79,11 +83,13 @@
                         outlined
                         label="Адрес проживания"
                         required
+                        :rules="rule"
                         v-model="addressInput"
                     />
                     <v-text-field
                         outlined
                         label="Отдел"
+                        :rules="rule"
                         v-model="departmentInput"
                     />
                     <v-textarea
@@ -149,7 +155,7 @@
             }
         },
         data: () => ({
-            valid: true,
+            rule: [(v) => !!v || "Это поле обязателно для заполнения"],
             menu: false,
             birthDateInput: new Date(
                 Date.now() - new Date().getTimezoneOffset() * 60000
