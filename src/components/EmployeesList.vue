@@ -1,11 +1,13 @@
 <template>
-    <ul>
-        <employees-list-item
-            v-for="employee in employees"
-            :key="employee.id"
-            :employee="employee"
-        />
-    </ul>
+    <v-app>
+        <ul class="employees-list">
+            <employees-list-item
+                v-for="employee in employees"
+                :key="employee.id"
+                :employee="employee"
+            />
+        </ul>
+    </v-app>
 </template>
 
 <script>
@@ -23,4 +25,11 @@
 </script>
 
 <style lang="scss" scoped>
+    .employees-list {
+        padding: 0;
+        display: grid;
+        grid-template-rows: auto;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
 </style>

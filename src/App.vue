@@ -1,7 +1,9 @@
 <template>
-    <div id="app">
-        <router-view />
-    </div>
+    <v-app>
+        <div id="app">
+            <router-view />
+        </div>
+    </v-app>
 </template>
 
 <script>
@@ -41,5 +43,9 @@
     * {
         padding: 0; /* Reset `padding` and `margin` of all elements */
         margin: 0;
+    }
+
+    li {
+        list-style: none;
     }
 </style>

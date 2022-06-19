@@ -11,11 +11,25 @@ export default new Vuex.Store({
   getters: {
     getEmployees(state) {
       return state.employees
+    },
+    getEmployeeById: (state) => (id) => {
+      return state.employees.find(employee => employee.id === id)
     }
   },
   mutations: {
     setEmployees(state, newEmployees) {
       state.employees = newEmployees
+    },
+    addEmployee(state, employee) {
+      state.employees.push(employee)
+    },
+    removeEmployee(state,id) {
+      state.employees = state.employees.filter((employee) => 
+         employee.id !== id
+      ) 
+    },
+    editEmployee(state, editedEmployee) {
+      state.employees = state.employees.map((employee) => employee.id === editedEmployee.id ? editedEmployee : employee)
     }
   },
   actions: {
@@ -46,6 +60,15 @@ export default new Vuex.Store({
 
           
         commit('setEmployees',newEmployees)
+      },
+      async createNewEmployee({commit}, employee) {
+        commit('addEmployee', employee)
+      },
+      async callRemovalOfEmployee({commit}, id) {
+        commit('removeEmployee',id)
+      },
+      async callEditOfEmployee({commit},editedEmployee) {
+        commit('editEmployee',editedEmployee)
       }
   },
   modules: {
