@@ -1,55 +1,45 @@
 <template>
-  <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
-
-    <v-main>
-      <router-view/>
-    </v-main>
-  </v-app>
+    <div id="app">
+        <router-view />
+    </div>
 </template>
 
 <script>
-
-export default {
-  name: 'App',
-
-  data: () => ({
-    //
-  }),
-};
+    export default {
+        name: "App"
+    }
 </script>
+
+<style lang="scss" >
+    @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+    html {
+        box-sizing: border-box;
+        -webkit-text-size-adjust: 100%; /* Prevent adjustments of font size after orientation changes in iOS */
+        word-break: normal;
+        -moz-tab-size: 4;
+        tab-size: 4;
+    }
+
+    body {
+        font-family: "Verdana", Geneva, Tahoma, sans-serif;
+    }
+
+    *,
+    ::before,
+    ::after {
+        background-repeat: no-repeat; /* Set `background-repeat: no-repeat` to all elements and pseudo elements */
+        box-sizing: inherit;
+    }
+
+    ::before,
+    ::after {
+        text-decoration: inherit; /* Inherit text-decoration and vertical align to ::before and ::after pseudo elements */
+        vertical-align: inherit;
+    }
+
+    * {
+        padding: 0; /* Reset `padding` and `margin` of all elements */
+        margin: 0;
+    }
+</style>
